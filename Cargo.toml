@@ -4,14 +4,23 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum = "0.8.1"
+axum = { version = "0.8.1", features = ["macros","multipart"] }
 axum-extra = { version = "0.10.0", features = ["cookie", "typed-header"] }
+oasgen = { version = "0.22.0", features = ["axum"] }
 cookie = "0.18.1"
-async-trait = "0.1.83"
+async-trait = "0.1.84"
 tokio = { version = "1", features = ["full"] }
 tower-http = { version = "0.6.1", features = ["full"] }
+utoipa = { version = "5.3.0", features = ["axum_extras", "debug"] }
+utoipa-swagger-ui = { version = "8.1.0", features = ["axum"] }
+utoipa-axum = "0.1.3"
 tracing = "0.1.40"
 tracing-subscriber = "0.3"
+serde = { version = "1.0.217", features = ["derive"] }
+serde_json = "1.0.132"
 dotenvy = "0.15.7"
 anyhow = "1.0.93"
 lazy_static = "1.5.0"
+openapi = "0.1.5"
+aide = { version = "0.13.5", features = ["axum"] }
+schemars = "0.8.0"
