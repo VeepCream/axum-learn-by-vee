@@ -1,16 +1,15 @@
 pub mod test_route;
 
-use axum::{http::StatusCode, response::IntoResponse, routing::get, Router};
-use test_route::get_test_route;
+use utoipa_axum::router::OpenApiRouter;
 
-pub fn app_root_route() -> Router {
-    let app = Router::new()
-        // `GET /` goes to `root`
-        .route("/", get(health_check))
-        .nest("/test_route", get_test_route());
-    return app;
+lazy_static::lazy_static! {
+    #[derive(Debug)]
+    static ref VERSION: String = "V1".to_string();
+    #[derive(Debug)]
+    static ref ROUTE_NAME: String = format!("{:?}", &*VERSION);
 }
 
-async fn health_check() -> impl IntoResponse {
-    (StatusCode::OK, "OK").into_response()
+pub fn router() -> OpenApiRouter {
+    OpenApiRouter::new()
+        .nest("/test_route", test_route::router())
 }
