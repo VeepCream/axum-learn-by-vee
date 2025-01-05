@@ -1,4 +1,5 @@
 pub mod test_route;
+pub mod login;
 
 use utoipa_axum::router::OpenApiRouter;
 
@@ -12,4 +13,5 @@ lazy_static::lazy_static! {
 pub fn router() -> OpenApiRouter {
     OpenApiRouter::new()
         .nest("/test_route", test_route::router())
+        .nest("/login", login::router())
 }
