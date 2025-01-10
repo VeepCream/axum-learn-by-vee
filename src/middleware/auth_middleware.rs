@@ -6,7 +6,7 @@ use axum::{
 };
 
 use crate::config;
-use super::jwt_authentication::verify_token;
+use crate::utils::jwt_authentication::verify_token;
 
 
 pub async fn token_authorization(

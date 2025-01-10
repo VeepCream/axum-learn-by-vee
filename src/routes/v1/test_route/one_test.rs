@@ -6,7 +6,7 @@ use utoipa::ToSchema;
 use utoipa_axum::router::OpenApiRouter;
 use utoipa_axum::routes;
 
-use crate::utils::middleware::token_authorization;
+use crate::middleware::auth_middleware::token_authorization;
 use crate::utils::security_addon::SecurityAddon;
 
 const ROUTE_NAME: &str = "v1/test_route/one_test";
